@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 Copyright 2015-2017 Alexandra Cherdantseva <neluhus.vagus@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,7 @@ limitations under the License.
 
 static bool Register()
 {
-	Q_INIT_RESOURCE(QtnProperty);
+    //Q_INIT_RESOURCE(QtnProperty);
 
 	qRegisterMetaType<QtnPropertyChangeReason>("QtnPropertyChangeReason");
 	qRegisterMetaType<QtnPropertyBase *>("QtnPropertyBase*");
