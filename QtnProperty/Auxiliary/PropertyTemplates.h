@@ -29,6 +29,7 @@ template <typename T, typename EqPred = std::equal_to<T>>
 class QtnSinglePropertyBase : public QtnProperty
 {
 public:
+
 	typedef T ValueType;
 	using ValueTypeStore = typename std::remove_const<
 		typename std::remove_reference<ValueType>::type>::type;
@@ -199,6 +200,16 @@ protected:
 	{
 	}
 
+	virtual QtnPropertyBase *clone(QObject *parent) override
+	{
+		auto pro = new QtnSinglePropertyValue(parent);
+		//QtnSinglePropertyType &base(*pro);
+		//base = (*this);
+		pro->clonePropertyFrome(*this);
+		pro->m_value = this->m_value;
+		return pro;
+	}
+
 	ValueType valueImpl() const override
 	{
 		return m_value;
@@ -226,6 +237,10 @@ public:
 	typedef std::function<void(ValueType)> CallbackValueSet;
 	typedef std::function<bool(ValueType)> CallbackValueAccepted;
 	typedef std::function<bool(ValueType)> CallbackValueEqual;
+
+	//virtual QtnPropertyBase * clone() override {
+	//	return new QtnSinglePropertyCallback<QtnSinglePropertyType>(*this);
+	//}
 
 	inline const CallbackValueGet &callbackValueDefault() const
 	{
@@ -337,6 +352,10 @@ class QtnNumericPropertyBase : public QtnSinglePropertyType
 {
 public:
 	typedef typename QtnSinglePropertyType::ValueType ValueType;
+
+	//virtual QtnPropertyBase * clone() override {
+	//	return new QtnNumericPropertyBase<QtnSinglePropertyType>(*this);
+	//}
 
 	inline ValueType defaultValue() const
 	{
@@ -490,6 +509,16 @@ protected:
 		: QtnNumericPropertyBase<QtnSinglePropertyType>(parent)
 		, m_value(ValueType(0))
 	{
+	}
+
+	virtual QtnPropertyBase *clone(QObject *parent) override
+	{
+		auto pro = new QtnNumericPropertyValue(parent);
+		//QtnSinglePropertyType &base(*pro);
+		//base = (*this);
+		pro->clonePropertyFrome(*this);
+		pro->m_value = this->m_value;
+		return pro;
 	}
 
 	inline ValueType valueImpl() const override

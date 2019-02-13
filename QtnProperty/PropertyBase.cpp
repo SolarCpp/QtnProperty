@@ -189,6 +189,15 @@ QtnPropertyBase::~QtnPropertyBase()
 	qtnRemovePropertyAsChild(parent(), this);
 }
 
+void QtnPropertyBase::clonePropertyFrome(const QtnPropertyBase & target) 
+{
+	this->setName(target.name());
+	this->setDescription(target.description());
+	this->setId(target.id());
+	this->setState(target.state());
+	this->setValueAsVariant(target.valueAsVariant());
+}
+
 const QMetaObject *QtnPropertyBase::propertyMetaObject() const
 {
 	return metaObject();

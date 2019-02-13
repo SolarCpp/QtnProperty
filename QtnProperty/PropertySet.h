@@ -33,6 +33,10 @@ public:
 		Descend,
 	};
 
+    virtual QtnPropertyBase * clone(QObject * parent) override {
+		return nullptr;
+	}
+
 	static int compareByName(
 		const QtnPropertyBase *a, const QtnPropertyBase *b);
 

@@ -32,6 +32,10 @@ class QTN_IMPORT_EXPORT QtnProperty : public QtnPropertyBase
 public:
 	virtual ~QtnProperty() override;
 
+	virtual QtnPropertyBase * clone(QObject *parent) override;
+
+    virtual void clonePropertyFrome(const QtnPropertyBase & target) override;
+
 	using DelegateInfoCallback = std::function<QtnPropertyDelegateInfo()>;
 
 	// delegates

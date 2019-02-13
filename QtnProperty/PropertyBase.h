@@ -48,6 +48,10 @@ class QTN_IMPORT_EXPORT QtnPropertyBase : public QObject
 public:
 	virtual ~QtnPropertyBase() override;
 
+	virtual QtnPropertyBase *clone(QObject *parent) = 0;
+
+	virtual void clonePropertyFrome(const QtnPropertyBase & target);
+
 	virtual const QMetaObject *propertyMetaObject() const;
 
 	inline QString name() const;

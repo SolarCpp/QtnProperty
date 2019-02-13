@@ -28,5 +28,6 @@ limitations under the License.
 #include "Core/PropertyQRect.h"
 #include "Core/PropertyQPoint.h"
 #include "Core/PropertyQSize.h"
+#include "Core/PropertyGroup.h"
 
 #endif // PROPERTYCORE_H

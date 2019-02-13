@@ -68,6 +68,21 @@ QtnProperty::~QtnProperty()
 	// Do not remove! Will be compile errors.
 }
 
+QtnPropertyBase * QtnProperty::clone(QObject * parent) {
+	return nullptr;
+}
+
+void QtnProperty::clonePropertyFrome(const QtnPropertyBase & target)
+{
+	auto &property = dynamic_cast<const QtnProperty &>(target);
+	if( & property ) {
+		auto pinfo = property.delegateInfo();
+		if ( pinfo )
+			this->setDelegateInfo(*pinfo);
+	}
+	QtnPropertyBase::clonePropertyFrome(target);
+}
+
 const QtnPropertyDelegateInfo *QtnProperty::delegateInfo() const
 {
 	if (m_delegateInfoGetter.isNull())

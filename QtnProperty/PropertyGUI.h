@@ -20,5 +20,8 @@ limitations under the License.
 #include "PropertySet.h"
 #include "GUI/PropertyQColor.h"
 #include "GUI/PropertyQFont.h"
+#include "GUI/PropertyFile.h"
+#include "GUI/PropertyFolder.h"
+
 
 #endif // PROPERTYGUI_H
