@@ -320,12 +320,12 @@ bool QtnPropertySet::fromStrImpl(const QString &str, bool edit)
 		QString propertyStrValue = params[2];
 
 		QList<QtnPropertyBase *> subProperties =
-			findChildProperties(propertyPath, Qt::FindChildrenRecursively);
+			findChildProperties(propertyPath.left(propertyPath.size()-1), Qt::FindChildrenRecursively);
 
 		if (subProperties.size() != 1)
 			continue;
 
-		if (subProperties[0]->fromStr(propertyStrValue, edit))
+		if (subProperties[0]->fromStr(propertyStrValue.right(propertyStrValue.size()-1), edit))
 			anySuccess = true;
 	}
 

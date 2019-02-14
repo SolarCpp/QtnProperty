@@ -52,9 +52,13 @@ protected:
 		Q_ASSERT(in.size() == me.size());
 		for (int i = 0; i < in.size(); i++) {
 			if (!(in.at(i)->state() & ignoreMask)) {
-				QString str;
-				in.at(i)->toStr(str);
-				me.at(i)->fromStr(str, false);
+				QVariant str;
+				in.at(i)->toVariant(str);
+				me.at(i)->fromVariant(str, false);
+				//QByteArray data;
+				//QDataStream out(&data, QIODevice::WriteOnly);
+				//in.at(i)->save(out);
+				//me.at(i)->load(QDataStream(data));
 			}
 		}
 		return true;
